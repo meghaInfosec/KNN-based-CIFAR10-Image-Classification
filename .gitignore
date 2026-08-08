@@ -1,0 +1,11 @@
+# CIFAR-10 downloaded data (large, auto-downloaded on first run)
+cifar10_data/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
