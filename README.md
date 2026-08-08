@@ -80,6 +80,16 @@ Using a subset of 5,000 training images and 200 test images with L1 distance:
 
 Accuracy is intentionally modest — this confirms the algorithm's core limitation: comparing raw pixels does not capture meaningful visual similarity. This result is the expected motivation for moving to KNN, linear classifiers, and eventually CNNs, which learn actual features instead of comparing pixels directly.
 
+## Decision Surface Visualization
+
+Since CIFAR-10 images live in 3072 dimensions (32×32×3 pixels), the decision boundary can't be plotted directly. The notebook includes a section that:
+1. Reduces a subset of images to 2D using PCA
+2. Fits the Nearest Neighbor classifier directly in that 2D space
+3. Predicts labels across a fine grid to visualize the resulting decision surface
+4. Overlays the actual training points, colored by class
+
+The result is a Voronoi-style diagram showing the jagged, cell-like boundaries Nearest Neighbor creates — useful for building intuition about why NN is sensitive to outliers, even though it's a 2D approximation of the much higher-dimensional real decision surface.
+
 ## Notes
 
 - The full 50,000-image training set is not used by default because pure-numpy nearest-neighbor search does not scale well — prediction time grows linearly with training set size, which is one of the core limitations this project is meant to demonstrate.
